@@ -7,6 +7,7 @@ body {
   color: #333;
 }
 
+/* Header Styling */
 header {
   background-color: #333;
   color: #fff;
@@ -18,56 +19,91 @@ header h1 {
   margin: 0;
 }
 
+/* Main Content */
 main {
-  padding-top: 20px;
-padding-left: 20px;
-padding-right: 20px;
-  padding-bottom: 100px; /* Ensures space between last element and footer */
+  padding: 20px;
+  padding-bottom: 100px; /* Prevents footer overlap */
+  max-width: 1200px; /* Centers content */
+  margin: auto;
 }
 
+/* Responsive Container */
 .tool {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin-bottom: 20px;
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.tool h2 {
-  margin-top: 0;
-}
-
+/* Input Group: Flex for Alignment */
 .input-group {
   display: flex;
+  flex-wrap: wrap; /* Wrap inputs on small screens */
   gap: 10px;
   align-items: center;
-  margin-bottom: 10px;
+  justify-content: center;
 }
 
+/* Input & Button Styling */
 input, select, button {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
+  width: 100%;
+  max-width: 250px;
 }
 
 button {
   background-color: #333;
   color: #fff;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 button:hover {
   background-color: #555;
 }
 
+/* Footer Placement */
 footer {
   text-align: center;
   padding: 10px;
-margin-top:20px;
   background-color: #333;
   color: #fff;
-  position: fixed;
-  bottom: 0;
   width: 100%;
+  position: relative;
+  margin-top: 20px;
+}
+
+/* 📱 Mobile Responsiveness */
+@media (max-width: 768px) {
+  .input-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  input, select, button {
+    width: 100%;
+  }
+
+  .tool {
+    width: 95%;
+  }
+
+  main {
+    padding: 15px;
+  }
+}
+
+/* 💻 Larger Screens */
+@media (min-width: 1024px) {
+  .tool {
+    max-width: 900px;
+  }
 }
