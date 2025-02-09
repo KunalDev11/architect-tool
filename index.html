@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architect & Interior Design Tool</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Architect & Interior Design Tool</h1>
+    <p>Your all-in-one solution for unit conversion, area calculation, and material estimation.</p>
+  </header>
+
+  <main>
+    <!-- Length Converter -->
+    <section class="tool">
+      <h2>Length Converter</h2>
+      <div class="input-group">
+        <input type="number" id="lengthValue" placeholder="Enter value">
+        <select id="lengthFrom">
+          <option value="meters">Meters (m)</option>
+          <option value="feet">Feet (ft)</option>
+          <option value="inches">Inches (in)</option>
+          <option value="centimeters">Centimeters (cm)</option>
+          <option value="millimeters">Millimeters (mm)</option>
+          <option value="kilometers">Kilometers (km)</option>
+          <option value="miles">Miles (mi)</option>
+          <option value="yards">Yards (yd)</option>
+        </select>
+        <span>to</span>
+        <select id="lengthTo">
+          <option value="feet">Feet (ft)</option>
+          <option value="meters">Meters (m)</option>
+          <option value="inches">Inches (in)</option>
+          <option value="centimeters">Centimeters (cm)</option>
+          <option value="millimeters">Millimeters (mm)</option>
+          <option value="kilometers">Kilometers (km)</option>
+          <option value="miles">Miles (mi)</option>
+          <option value="yards">Yards (yd)</option>
+        </select>
+        <button onclick="convertLength()">Convert</button>
+      </div>
+      <p id="lengthResult"></p>
+    </section>
+
+    <!-- Area Converter -->
+    <section class="tool">
+      <h2>Area Converter</h2>
+      <div class="input-group">
+        <input type="number" id="areaValue" placeholder="Enter value">
+        <select id="areaFrom">
+          <option value="squareMeters">Square Meters (m²)</option>
+          <option value="squareFeet">Square Feet (ft²)</option>
+          <option value="squareInches">Square Inches (in²)</option>
+          <option value="squareCentimeters">Square Centimeters (cm²)</option>
+          <option value="acres">Acres</option>
+          <option value="hectares">Hectares</option>
+        </select>
+        <span>to</span>
+        <select id="areaTo">
+          <option value="squareFeet">Square Feet (ft²)</option>
+          <option value="squareMeters">Square Meters (m²)</option>
+          <option value="squareInches">Square Inches (in²)</option>
+          <option value="squareCentimeters">Square Centimeters (cm²)</option>
+          <option value="acres">Acres</option>
+          <option value="hectares">Hectares</option>
+        </select>
+        <button onclick="convertArea()">Convert</button>
+      </div>
+      <p id="areaResult"></p>
+    </section>
+
+    <!-- Volume Converter -->
+    <section class="tool">
+      <h2>Volume Converter</h2>
+      <div class="input-group">
+        <input type="number" id="volumeValue" placeholder="Enter value">
+        <select id="volumeFrom">
+          <option value="cubicMeters">Cubic Meters (m³)</option>
+          <option value="cubicFeet">Cubic Feet (ft³)</option>
+          <option value="cubicInches">Cubic Inches (in³)</option>
+          <option value="liters">Liters (L)</option>
+          <option value="gallons">Gallons (gal)</option>
+        </select>
+        <span>to</span>
+        <select id="volumeTo">
+          <option value="cubicFeet">Cubic Feet (ft³)</option>
+          <option value="cubicMeters">Cubic Meters (m³)</option>
+          <option value="cubicInches">Cubic Inches (in³)</option>
+          <option value="liters">Liters (L)</option>
+          <option value="gallons">Gallons (gal)</option>
+        </select>
+        <button onclick="convertVolume()">Convert</button>
+      </div>
+      <p id="volumeResult"></p>
+    </section>
+
+    <!-- Weight Converter -->
+    <section class="tool">
+      <h2>Weight Converter</h2>
+      <div class="input-group">
+        <input type="number" id="weightValue" placeholder="Enter value">
+        <select id="weightFrom">
+          <option value="kilograms">Kilograms (kg)</option>
+          <option value="pounds">Pounds (lb)</option>
+          <option value="ounces">Ounces (oz)</option>
+          <option value="grams">Grams (g)</option>
+          <option value="tons">Tons</option>
+        </select>
+        <span>to</span>
+        <select id="weightTo">
+          <option value="pounds">Pounds (lb)</option>
+          <option value="kilograms">Kilograms (kg)</option>
+          <option value="ounces">Ounces (oz)</option>
+          <option value="grams">Grams (g)</option>
+          <option value="tons">Tons</option>
+        </select>
+        <button onclick="convertWeight()">Convert</button>
+      </div>
+      <p id="weightResult"></p>
+    </section>
+ <!-- Existing Sections: Length, Area, Volume, Weight Converters -->
+    
+    <!-- Material Estimation -->
+    <section class="tool">
+      <h2>Material Estimation</h2>
+      <div class="input-group">
+        <label for="materialType">Select Material:</label>
+        <select id="materialType">
+          <option value="cement">Cement (Bags)</option>
+          <option value="sand">Sand (Cubic Feet)</option>
+          <option value="gravel">Gravel (Cubic Feet)</option>
+          <option value="bricks">Bricks (Numbers)</option>
+        </select>
+        <label for="areaSize">Enter Area (sq. meters):</label>
+        <input type="number" id="areaSize" placeholder="Enter area">
+        <button onclick="estimateMaterial()">Estimate</button>
+      </div>
+      <p id="materialResult"></p>
+    </section>
+
+
+  <!-- Flooring Estimation -->
+    <section class="tool">
+      <h2>Flooring Estimation</h2>
+      <div class="input-group">
+        <label for="floorArea">Room Area (sq. meters):</label>
+        <input type="number" id="floorArea" placeholder="Enter area">
+        <label for="tileSize">Tile Size (sq. meters):</label>
+        <input type="number" id="tileSize" placeholder="Enter tile size">
+        <button onclick="estimateFlooring()">Estimate</button>
+      </div>
+      <p id="flooringResult"></p>
+    </section>
+
+    <!-- Paint Estimation -->
+    <section class="tool">
+      <h2>Paint Estimation</h2>
+      <div class="input-group">
+        <label for="paintArea">Wall Area (sq. meters):</label>
+        <input type="number" id="paintArea" placeholder="Enter area">
+        <label for="coats">Number of Coats:</label>
+        <input type="number" id="coats" placeholder="Enter coats">
+        <button onclick="estimatePaint()">Estimate</button>
+      </div>
+      <p id="paintResult"></p>
+    </section>
+
+    <!-- Curtain Estimation -->
+    <section class="tool">
+      <h2>Curtain Estimation</h2>
+      <div class="input-group">
+        <label for="windowWidth">Window Width (meters):</label>
+        <input type="number" id="windowWidth" placeholder="Enter width">
+        <label for="fullness">Fullness Factor:</label>
+        <input type="number" id="fullness" placeholder="Enter factor (1.5-2.5)">
+        <button onclick="estimateCurtains()">Estimate</button>
+      </div>
+      <p id="curtainResult"></p>
+    </section>
+
+    <!-- Lighting Calculation -->
+    <section class="tool">
+      <h2>Lighting Calculation</h2>
+      <div class="input-group">
+        <label for="lightArea">Room Area (sq. meters):</label>
+        <input type="number" id="lightArea" placeholder="Enter area">
+        <label for="wattage">Recommended Wattage per sq. meter:</label>
+        <input type="number" id="wattage" placeholder="Enter wattage">
+        <button onclick="estimateLighting()">Estimate</button>
+      </div>
+      <p id="lightingResult"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2023 Architect & Interior Design Tool. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
