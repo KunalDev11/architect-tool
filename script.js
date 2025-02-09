@@ -160,6 +160,22 @@ function estimatePaint() {
     const result = totalLumens / lumensPerBulb;
     document.getElementById("lightingResult").innerText = `Required: ${Math.ceil(result)} bulbs`;
   }
+
+
+// Function to adjust UI based on screen size
+function adjustUI() {
+  const screenWidth = window.innerWidth;
+
+  if (screenWidth < 768) {
+    document.querySelectorAll('input, select, button').forEach(el => {
+      el.style.fontSize = '14px';
+    });
+  } else {
+    document.querySelectorAll('input, select, button').forEach(el => {
+      el.style.fontSize = '16px';
+    });
+  }
+}
 // Weight Converter
 function convertWeight() {
   const value = parseFloat(document.getElementById("weightValue").value);
