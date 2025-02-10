@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Architect & Interior Design Tool</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -147,6 +147,8 @@
       <div class="input-group">
         <label for="floorArea">Room Area (sq. meters):</label>
         <input type="number" id="floorArea" placeholder="Enter area">
+</div>
+<div class="input-group">
         <label for="tileSize">Tile Size (sq. meters):</label>
         <input type="number" id="tileSize" placeholder="Enter tile size">
         <button onclick="estimateFlooring()">Estimate</button>
@@ -167,31 +169,70 @@
       <p id="paintResult"></p>
     </section>
 
-    <!-- Curtain Estimation -->
     <section class="tool">
-      <h2>Curtain Estimation</h2>
-      <div class="input-group">
-        <label for="windowWidth">Window Width (meters):</label>
-        <input type="number" id="windowWidth" placeholder="Enter width">
-        <label for="fullness">Fullness Factor:</label>
-        <input type="number" id="fullness" placeholder="Enter factor (1.5-2.5)">
-        <button onclick="estimateCurtains()">Estimate</button>
-      </div>
-      <p id="curtainResult"></p>
-    </section>
+  <h2>Curtain Estimation</h2>
+  <div class="input-group">
+    <label for="windowWidth">Window Width (inches):</label>
+    <input type="number" id="windowWidth" placeholder="Enter width">
+  </div>
+  <div class="input-group">
+    <label for="windowHeight">Window Height (inches):</label>
+    <input type="number" id="windowHeight" placeholder="Enter height">
+  </div>
+  <div class="input-group">
+    <label for="curtainStyle">Curtain Style:</label>
+    <select id="curtainStyle">
+      <option value="1">Single Panel</option>
+      <option value="2">Double Panel</option>
+      <option value="3">Triple Panel</option>
+    </select>
+  </div>
+  <div class="input-group">
+    <label for="fabricWidth">Fabric Width (inches):</label>
+    <select id="fabricWidth">
+      <option value="54">54 inches</option>
+      <option value="110">110 inches</option>
+    </select>
+  </div>
+  <div class="input-group">
+    <label for="fullnessRatio">Fullness Ratio:</label>
+    <select id="fullnessRatio">
+      <option value="1.5">1.5x</option>
+      <option value="2">2x</option>
+      <option value="2.5">2.5x</option>
+    </select>
+  </div>
+  <div class="input-group">
+    <label for="headerHem">Header & Hem Allowance (inches):</label>
+    <input type="number" id="headerHem" placeholder="Enter allowance" value="12">
+  </div>
+  <button onclick="estimateCurtains()">Estimate</button>
+  <p id="curtainResult"></p>
+</section>
+   <!-- Lighting Calculation -->
+<section class="tool">
+  <h2>Lighting Calculation</h2>
 
-    <!-- Lighting Calculation -->
-    <section class="tool">
-      <h2>Lighting Calculation</h2>
-      <div class="input-group">
-        <label for="lightArea">Room Area (sq. meters):</label>
-        <input type="number" id="lightArea" placeholder="Enter area">
-        <label for="wattage">Recommended Wattage per sq. meter:</label>
-        <input type="number" id="wattage" placeholder="Enter wattage">
-        <button onclick="estimateLighting()">Estimate</button>
-      </div>
-      <p id="lightingResult"></p>
-    </section>
+  <div class="input-group">
+    <label for="lightArea">Room Area (sq. meters):</label>
+    <input type="number" id="lightArea" placeholder="Enter room area" min="0">
+  </div>
+
+  <div class="input-group">
+    <label for="wattage">Wattage per sq. meter:</label>
+    <input type="number" id="wattage" placeholder="Enter recommended wattage" min="0">
+  </div>
+
+  <div class="input-group">
+    <label for="bulbWattage">Wattage of each bulb:</label>
+    <input type="number" id="bulbWattage" placeholder="Enter bulb wattage" min="0">
+  </div>
+
+  <button onclick="estimateLighting()">Estimate</button>
+
+  <p id="lightingResult"></p>
+</section>
+
   </main>
 
   <footer>
