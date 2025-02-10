@@ -7,7 +7,7 @@ body {
   color: #333;
 }
 
-/* Header Styling */
+/* Header */
 header {
   background-color: #333;
   color: #fff;
@@ -23,30 +23,38 @@ header h1 {
 main {
   padding: 20px;
   padding-bottom: 100px; /* Prevents footer overlap */
-  max-width: 1200px; /* Centers content */
+  max-width: 1200px;
   margin: auto;
 }
 
-/* Responsive Container */
+/* Reusable Card Style */
 .tool {
-  background-color: #fff;
+  background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin-bottom: 20px;
-  width: 100%;
   max-width: 800px;
+  width: 95%;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Input Group: Flex for Alignment */
+.tool h2 {
+  margin-top: 0;
+}
+/* Input Group */
 .input-group {
   display: flex;
-  flex-wrap: wrap; /* Wrap inputs on small screens */
+  flex-wrap: wrap;
   gap: 10px;
-  align-items: center;
-  justify-content: center;
+ 
+  margin: 10px 0; /* Adds vertical spacing */
+}
+
+
+label {
+  font-weight: bold;
 }
 
 /* Input & Button Styling */
@@ -63,25 +71,27 @@ button {
   background-color: #333;
   color: #fff;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease-in-out;
+ display: block; /* Makes button a block element */
+  margin-left: auto; /* Moves it to the right */
 }
 
 button:hover {
   background-color: #555;
 }
 
-/* Footer Placement */
+/* Footer */
 footer {
   text-align: center;
   padding: 10px;
   background-color: #333;
   color: #fff;
   width: 100%;
-  position: relative;
   margin-top: 20px;
+  position: relative;
 }
 
-/* 📱 Mobile Responsiveness */
+/* Responsive Design */
 @media (max-width: 768px) {
   .input-group {
     flex-direction: column;
@@ -101,7 +111,6 @@ footer {
   }
 }
 
-/* 💻 Larger Screens */
 @media (min-width: 1024px) {
   .tool {
     max-width: 900px;
