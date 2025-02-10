@@ -135,32 +135,71 @@ function estimatePaint() {
     document.getElementById("paintResult").innerText = `Required: ${result.toFixed(2)} liters of paint`;
   }
 
-  function estimateFlooring() {
-    const length = parseFloat(document.getElementById("floorLength").value);
-    const width = parseFloat(document.getElementById("floorWidth").value);
-    const tileSize = parseFloat(document.getElementById("tileSize").value);
-    const area = length * width;
-    const result = area / tileSize;
-    document.getElementById("flooringResult").innerText = `Required: ${Math.ceil(result)} tiles`;
+ function estimateFlooring() {
+  const floorArea = parseFloat(document.getElementById("floorArea").value);
+  const tileSize = parseFloat(document.getElementById("tileSize").value);
+
+  // Validate inputs
+  if (isNaN(floorArea) || isNaN(tileSize) || floorArea <= 0 || tileSize <= 0) {
+    document.getElementById("flooringResult").innerText = "Please enter valid values.";
+    return;
   }
 
-  function estimateCurtains() {
-    const width = parseFloat(document.getElementById("windowWidth").value);
-    const height = parseFloat(document.getElementById("windowHeight").value);
-    const fabricMultiplier = 2; // Double width for pleats
-    const result = width * fabricMultiplier;
-    document.getElementById("curtainResult").innerText = `Required: ${result.toFixed(2)} meters of fabric`;
+  const tilesRequired = Math.ceil(floorArea / tileSize); // Calculate tiles needed
+  document.getElementById("flooringResult").innerText = `Required: ${tilesRequired} tiles`;
+}
+
+
+  // Curtain Estimation
+function estimateCurtains() {
+  // Get input values
+  const windowWidth = parseFloat(document.getElementById("windowWidth").value);
+  const windowHeight = parseFloat(document.getElementById("windowHeight").value);
+  const curtainStyle = parseFloat(document.getElementById("curtainStyle").value);
+  const fabricWidth = parseFloat(document.getElementById("fabricWidth").value);
+  const fullnessRatio = parseFloat(document.getElementById("fullnessRatio").value);
+  const headerHem = parseFloat(document.getElementById("headerHem").value);
+
+  // Validate inputs
+  if (isNaN(windowWidth) || isNaN(windowHeight) || isNaN(headerHem)) {
+    document.getElementById("curtainResult").innerText = "Please enter valid numbers.";
+    return;
   }
 
-  function estimateLighting() {
-    const roomArea = parseFloat(document.getElementById("lightArea").value);
-    const lumensPerSquareMeter = 300;
-    const totalLumens = roomArea * lumensPerSquareMeter;
-    const lumensPerBulb = 800;
-    const result = totalLumens / lumensPerBulb;
-    document.getElementById("lightingResult").innerText = `Required: ${Math.ceil(result)} bulbs`;
+  // Calculate total fabric width required
+  const totalWidth = windowWidth * fullnessRatio * curtainStyle;
+
+  // Calculate number of fabric panels needed
+  const panelsNeeded = Math.ceil(totalWidth / fabricWidth);
+
+  // Calculate total fabric length required
+  const totalLength = (windowHeight + headerHem) * panelsNeeded;
+
+  // Display result
+  document.getElementById("curtainResult").innerText =
+    `Fabric Required: ${panelsNeeded} panels x ${totalLength.toFixed(2)} inches`;
+}
+ //Lighting Calculation 
+
+function estimateLighting() {
+  const lightArea = parseFloat(document.getElementById("lightArea").value);
+  const wattagePerSqM = parseFloat(document.getElementById("wattage").value);
+  const bulbWattage = parseFloat(document.getElementById("bulbWattage").value);
+
+  // Validate inputs
+  if (isNaN(lightArea) || isNaN(wattagePerSqM) || isNaN(bulbWattage) || lightArea <= 0 || wattagePerSqM <= 0 || bulbWattage <= 0) {
+    document.getElementById("lightingResult").innerText = "Please enter valid values.";
+    return;
   }
 
+  // Calculate required total wattage
+  const totalWattage = lightArea * wattagePerSqM;
+
+  // Calculate the number of bulbs required (rounded up)
+  const bulbsNeeded = Math.ceil(totalWattage / bulbWattage);
+
+  document.getElementById("lightingResult").innerText = `You need approximately ${bulbsNeeded} bulbs (${totalWattage}W total).`;
+}
 
 // Function to adjust UI based on screen size
 function adjustUI() {
